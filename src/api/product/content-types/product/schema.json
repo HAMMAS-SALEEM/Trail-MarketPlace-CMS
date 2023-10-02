@@ -12,18 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": false
     },
-    "Cost": {
+    "cost": {
       "type": "biginteger",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Image": {
+    "image": {
       "type": "string"
     }
   }

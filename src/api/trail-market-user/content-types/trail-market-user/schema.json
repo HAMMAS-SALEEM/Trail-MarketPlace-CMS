@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trail_market_users",
+  "info": {
+    "singularName": "trail-market-user",
+    "pluralName": "trail-market-users",
+    "displayName": "TrailMarket Users"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "granite_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "purchases": {
+      "type": "json"
+    },
+    "amount_spent": {
+      "type": "biginteger"
+    }
+  }
+}

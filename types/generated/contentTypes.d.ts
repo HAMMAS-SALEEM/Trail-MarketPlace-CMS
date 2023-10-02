@@ -374,10 +374,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Cost: Attribute.BigInteger & Attribute.Required;
-    Description: Attribute.Text;
-    Image: Attribute.String;
+    name: Attribute.String;
+    cost: Attribute.BigInteger & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -389,6 +389,39 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrailMarketUserTrailMarketUser
+  extends Schema.CollectionType {
+  collectionName: 'trail_market_users';
+  info: {
+    singularName: 'trail-market-user';
+    pluralName: 'trail-market-users';
+    displayName: 'TrailMarket Users';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    granite_id: Attribute.String & Attribute.Required & Attribute.Unique;
+    purchases: Attribute.JSON;
+    amount_spent: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::trail-market-user.trail-market-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::trail-market-user.trail-market-user',
       'oneToOne',
       'admin::user'
     > &
@@ -722,6 +755,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::product.product': ApiProductProduct;
+      'api::trail-market-user.trail-market-user': ApiTrailMarketUserTrailMarketUser;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
